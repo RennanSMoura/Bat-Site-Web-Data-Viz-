@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bat- Dashboard</title>
+        <link rel="stylesheet" href="../css/dashboard.css">
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body onload="receberDadosDash(), receberScoreGrafico()">
+        <section class="container">
+            <aside>
+                <div class="top">
+                    <img src="../assets/Batuser.png" alt="">
+                    <span>Olá, <span id="usuario_nome"></span>
+                </div>
+                <div class="content">
+                    <span >
+                        <i id="play" class="fa-solid fa-play"></i>BAT-CORRIDA</span>
+                    <span>
+                        <i class="fa-solid fa-chart-line"></i>DASHBOARD</span>
+                    <span>
+                        <i class="fa-solid fa-medal"></i>RANKING</span>
+                </div>
+                <div class="bottom">
+                    <span>
+                        <i class="fa-solid fa-door-open"></i>SAIR</span>
+                </div>
+            </aside>
+            <main>
+                <div class="kpis">
+                    <div class="kpi kpi1">
+                        <i class="fa-regular fa-lightbulb"></i>
+                        <span>TOTAL DE PALAVRAS DESCOBERTAS</span>
+                        <span id="palavrasDescobertas"></span>
+                    </div>
+                    <div class="kpi kpi2">
+                        <i class="fa-solid fa-trophy"></i>
+                        <span>MAIOR PONTUAÇÃO ATINGIDA</span>
+                        <span id="highScore"></span>
+                    </div>
+                    <div class="kpi kpi3">
+                        <i class="fa-solid fa-medal"></i>
+                        <span>MELHOR POSIÇÃO NO RANKING</span>
+                        <span id="bestPosition">3°</span>
+                    </div>
+                </div>
+                <div class="grafico">
+                    <h1>DESEMPENHO NAS ÚLTIMAS 10 PARTIDAS</h1>
+                    <canvas id="grafico" width="800" height="400"></canvas>
+                </div>
+
+                <div id="fodase"></div>
+            </main>
+        </section>
+    </body>
+</html>
+
+<script>
+    function receberDadosDash() {
+        var idUsuario = sessionStorage.ID_USUARIO
+
+            fetch(`/usuarios/receberDados?id=${idUsuario}`)
+            .then(function (resposta) {
+                console.log("Recebendo dados da corrida!")
+
+                if (resposta.ok) {
+                    console.log(resposta);
+
+                    resposta.json().then(json => {
+                            console.log(json);
+                            console.log(JSON.stringify(json));
+                            sessionStorage.SCORE_USUARIO = json.score;
+                            sessionStorage.PALAVRASDESCOBERTAS_USUARIO = json.palavrasDescobertas;
+
+
+                            
+                            exibirDadosDash()
+                        })
+                } else {
+                    console.log("Houve um erro ao tentar recuperar os dados!");
+                    resposta
+                        .text()
+                        .then(texto => {
+                            console.error(texto);
+                            finalizarAguardar(texto);
+                        });
+                }
+            })
+
+    }
+
+    function exibirDadosDash(){
+        const emailUsuario = sessionStorage.getItem("EMAIL_USUARIO");
+        const idUsuario = sessionStorage.getItem("ID_USUARIO");
+        const nomeUsuario = sessionStorage.getItem("NOME_USUARIO");
+        const palavrasDescobertas = sessionStorage.getItem("PALAVRASDESCOBERTAS_USUARIO");
+        const melhorScoreUsuario = sessionStorage.getItem("SCORE_USUARIO");
+
+
+        document.getElementById("usuario_nome").innerHTML = `${nomeUsuario}`;
+        document.getElementById("palavrasDescobertas").innerHTML = `${palavrasDescobertas}`;
+        document.getElementById("highScore").innerHTML = `${melhorScoreUsuario}`;
+    }
+</script>
+
+<script src="../js/sessao.js"></script>
+<script src="grafico.js"></script>
+<script src="../js/batcorrida.js"></script>

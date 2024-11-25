@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BatSite</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <section class="container">
+        <nav>
+            <img src="assets/logo.png" alt="logo-batman">
+            <a href="#">HOME</a>
+            <a href="#trilogia">TRILOGIA</a>
+            <a href="#coringa">CORINGA</a>
+            <a href="#edutainment">EDUTAINMENT</a>
+            <a href="#sobremim">SOBRE MIM</a>
+            <a href="auth/bat-login.html" class="btn-amarelo">ENTRAR</a>
+        </nav>
+
+        <div class="home">
+            <div class="txthome">
+                <h1>BATMAN</h1>
+                <span class="textoPrincipal"><span class="yellowWord">Batman</span> dedicou sua vida a uma cruzada sem
+                    fim, uma <span class="yellowWord">guerra</span> contra todos os criminosos em nome de seus <span
+                        class="yellowWord">pais</span> assassinados, que foram tirados dele quando ele era <span
+                        class="yellowWord">apenas</span> uma <span class="yellowWord">criança</span>.</span>
+
+                <div class="frasesImpactantes">
+                    <p>Ele é a <span class="yellowWord">vingança</span>.</p>
+                    <p>Ele é a <span class="yellowWord">noite</span>.</p>
+                    <p>Ele é o <span class="yellowWord">Batman</span>.</p>
+                </div>
+            </div>
+            <img src="assets/batman 1.png">
+        </div>
+        <div class="container2">
+            <div id="trilogia" class="trilogia">
+                <h1>TRILOGIA</h1>
+                <div class="imgCard">
+                    <div class="flip-card-front">
+                        <span id="card-title">BATMAN BEGINS</span>
+                        <img id="card-image" src="assets/begins.png" alt="card-begins">
+                        <a class="btn-amarelo" onclick="flipCard()">LER MAIS</a>
+                    </div>
+                </div>
+                <button class="btn-prev" onclick="changeImage(-1)">&#10094;</button>
+                <button class="btn-next" onclick="changeImage(1)">&#10095;</button>
+            </div>
+
+            <div id="coringa" class="coringa">
+                <h1>CORINGA</h1>
+                <div class="imgCard">
+                    <img src="assets/coringa.png" alt="card-begins">
+                    <a class="btn-amarelo">LER MAIS</a>
+                </div>
+            </div>
+
+            <div id="edutainment" class="edutainment">
+                <h1>EDUTAINMENT</h1>
+                <div class="conteudo">
+                    <div class="textosedutainment">
+                        <ul>
+                            <div class="bloco1">
+                                <img src="assets/list-icon.png" alt="">
+                                <li>O objetivo desta técnica é tornar o <span class="yellowWord">aprendizado</span> mais
+                                    <span class="yellowWord">atrativo</span>, despertar a curiosidade e o <span
+                                        class="yellowWord">interesse</span> em <span class="yellowWord">aprender</span>.
+                                </li>
+                            </div>
+                            <div class="bloco1">
+                                <img src="assets/list-icon.png" alt="">
+                                <li>A edutainment utiliza-se de games, <span class="yellowWord">filmes</span>, séries e
+                                    outras
+                                    abordagens <span class="yellowWord">divertidas</span> para tornar
+                                    o aprendizado <span class="yellowWord">dinâmico</span>.</li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="imgCard2">
+                        <a class="btn-amarelo">LER MAIS</a>
+                        <img src="assets/batmanaula1.png" alt="batman-dando-aula">
+                    </div>
+                </div>
+            </div>
+
+            <div class="edutainment">
+                <h1>EDUTAINMENT</h1>
+                <div class="conteudo1">
+                    <div class="imgCard">
+                        <img src="assets/batmanaula1.png" alt="batman-dando-aula">
+                    </div>
+                    <div class="textos">
+                        <span>
+                            Os <span class="yellowWord">benefícios</span> do Edutainment são diversos:
+                        </span>
+                        <div class="bloco1">
+                            <img src="assets/list-icon.png" alt="">
+                            <li>Aumento do <span class="yellowWord"> engajamento</span> e da <span
+                                    class="yellowWord">motivação</span> </li>
+                        </div>
+                        <div class="bloco1">
+                            <img src="assets/list-icon.png" alt="">
+                            <li>Melhora na <span class="yellowWord">
+                                    retenção
+                                </span> do conteúdo</li>
+                        </div>
+                        <div class="bloco1">
+                            <img src="assets/list-icon.png" alt="">
+                            <li>
+                                <span class="yellowWord">Superação</span>
+                                da aversão à aprendizagem
+                            </li>
+                        </div>
+                        <div class="bloco1">
+                            <img src="assets/list-icon.png" alt="">
+                            <li>Promoção da <span class="yellowWord">inclusão</span></li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sobremim" class="sobremim">
+                <h1>SOBRE MIM</h1>
+                <div class="sobremimconteudo">
+                    <div class="imgsobremim">
+                        <img src="assets/foto2.png" alt="">
+                    </div>
+                    <div class="textosobremim">
+                        <div class="msg">
+                            <p>Olá! Sou <span class="yellowWord">Rennan</span>, apaixonado por tecnologia e pela
+                                oportunidade de transformar <span class="yellowWord">ideias</span> em <span
+                                    class="yellowWord">realidade</span>.</p>
+                            <p>Criei este site para compartilhar minha jornada, principalmente para demonstrar como o
+                                <span class="yellowWord">processo</span> de <span class="yellowWord">educação</span> não
+                                precisa ser massante, mas sim <span class="yellowWord">divertido</span>. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sobreprojeto">
+                <h1>SOBRE O PROJETO</h1>
+                <div class="conteudosobreprojeto">
+                    <div class="textossobreprojeto">
+                        <div class="msg">
+                            <p>A real <span class="yellowWord">motivação</span> do meu site foi demonstrar meu
+                                aprendizado a
+                                uma <span class="yellowWord">segunda língua</span>, onde busquei uma forma mais <span
+                                    class="yellowWord">divertida</span> de aprender.</p>
+                            <p>O site é um espaço para <span class="yellowWord">conectar</span> pessoas que buscam
+                                aprender
+                                de uma maneira mais<span class="yellowWord">leve</span> . Aproveite para explorar, e
+                                sinta-se à vontade para entrar em contato. Vamos<span
+                                    class="yellowWord">transformar</span>
+                                ideias em <span class="yellowWord">ações</span> juntos! </p>
+                        </div>
+                    </div>
+                    <div class="imgsobreprojeto">
+                        <img src="assets/foto2.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="img">
+                    <img src="assets/imgfooter.png" alt="">
+                </div>
+                <div class="mensagem">
+                    <p>O projeto é exclusivamente acadêmico
+                        e não possui fins lucrativos.</p>
+                    <p>Todos os direitos reservados ©</p>
+                </div>
+                <div class="redessociais">
+                    <span>Redes Sociais</span>
+                    <div class="social-container">
+                        <a href="https://github.com/seu-usuario" class="social-link">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://instagram.com/seu-usuario" class="social-link">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://linkedin.com/in/seu-usuario" class="social-link">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </section>
+</body>
+<script src="js/main.js"></script>
+
+</html>

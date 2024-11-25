@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Rubik+Wet+Paint&family=Russo+One&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Russo One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body{
+   
+}
+
+.container{
+    padding: 50px;
+}
+
+.game-board {
+    border-radius: 20px;
+    width: 100%;
+    height: 500px;
+    border-bottom: 15px solid #000;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background-image: url('../assets/predio-gotham.png');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.joker{
+    position: absolute;
+    bottom: 0;
+    width: 80px;
+    animation: joker-animation 1.4s linear infinite;
+}
+
+.batman{
+    position: absolute;
+    width: 150px;
+    bottom: 0;
+}
+
+.builds{
+    position: absolute;
+    width: 800px;
+    animation: builds 5s infinite linear;
+}
+
+.jump{
+    animation: batman-jump 500ms  ease-out;
+}
+
+@keyframes joker-animation {
+
+    from{
+        right: -80px;
+    }
+
+    to{
+        right: 100%;
+    }
+    
+}
+
+@keyframes batman-jump {
+    0%{
+        bottom: 0;
+    }
+
+    40%{
+        bottom: 180px
+    }
+
+    50%{
+        bottom: 180px;
+    }
+
+    60%{
+        bottom: 180px;
+    }
+
+    100%{
+        bottom: 0;
+    }
+}
+
+@keyframes clouds {
+    from{
+        right: -350px;
+    }
+
+    to{
+        right: 100%;
+    }
+}
+@keyframes clouds2 {
+    from{
+        right: -350px;
+    }
+
+    to{
+        right: 100%;
+    }
+}
+
+.clouds{
+    position: absolute;
+    top: -185px;
+    right: -90px;
+    animation: clouds 25s linear infinite;
+}
+
+.clouds2{
+    right: -180px;
+    position: absolute;
+    top: -200px;
+    opacity: 0.8;
+    animation: clouds2 20s linear infinite;
+}
+
+
+#start-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 30%;
+    top: 36%;
+    background-color: #FFCC00;
+    padding: 50px;
+    border: none;
+    font-size: 40px;
+    border-radius: 20px;
+
+    & i{
+        font-size: 50px;
+        padding: 10px;
+    }
+}
+
+
+.dialogos{
+    font-size: 30px;
+    padding-top: 50px;
+}

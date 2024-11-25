@@ -1,0 +1,633 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Rubik+Wet+Paint&family=Russo+One&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.container {
+    background: linear-gradient(270deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(1, 1, 1, 1) 50%,
+            rgba(1, 1, 1, 1) 60%,
+            rgba(0, 0, 0, 1) 70%,
+            rgba(6, 6, 6, 1) 80%,
+            rgba(9, 9, 9, .95) 90%);
+
+    width: 100%;
+    height: 100%;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espaçamento uniforme */
+    gap: 100px; /* Espaçamento entre as divs */
+    align-items: center;
+}
+
+.container2 > div {
+    flex: 1 1 30%; /* Flexível, com base de 30% para uniformidade */
+    min-width: 250px; /* Tamanho mínimo para garantir que as divs não fiquem muito pequenas */
+    padding: 15px; /* Espaçamento interno */
+    box-sizing: border-box; /* Para que padding não afete o tamanho total */
+    /* border: 1px solid #ccc; Opcional: borda para visualização */
+}
+
+
+nav {
+    font-family: "Russo One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-around;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #000000;
+    
+    & a {
+        text-decoration: none;
+        font-size: 1.3rem;
+        color: #ffffff;
+    }
+
+    & img {
+        width: 100px;
+    }
+
+    & .btn-amarelo {
+        display: flex;
+        justify-content: center;
+        background-color: #FFCC00;
+        color: #000000;
+        width: 120px;
+        height: 40px;
+        text-align: center;
+        align-items: center;
+        border-radius: 10px;
+    }
+}
+
+.home {
+    display: flex;
+    width: 100%;
+    margin-bottom: 100px;
+
+    & .txthome {
+        width: 50%;
+    }
+
+    & img {
+        width: 50%;
+        height: 585px;
+    }
+
+    & .txthome {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        color: #ffffff;
+        font-family: "Russo One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        padding-left: 5%;
+        font-size: 25px;
+
+        & h1 {
+            font-family: "Rubik Wet Paint", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            color: #ffffff;
+            font-size: 80px;
+            display: flex;
+        }
+    }
+}
+
+.textoPrincipal {
+    width: 77%;
+}
+
+.yellowWord {
+    color: #FFCC00;
+}
+
+.frasesImpactantes {
+    font-size: 35px;
+
+}
+
+.trilogia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-bottom: 100px; */
+    position: relative; 
+    width: 85%;
+}
+
+.trilogia h1 {
+    font-family: "Rubik Wet Paint", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: #ffffff;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+
+.imgCard .flip-card-front{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .imgCard {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+  }
+
+.imgCard span {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: white;
+    font-size: 40px;
+    font-family: "Russo One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.imgCard .btn-amarelo {
+    position: absolute;
+    bottom: 3%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: white;
+    font-size: 25px;
+    font-family: "Russo One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    background-color: #FFCC00;
+    color: #000000;
+    width: 180px;
+    height: 60px;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.imgCard img {
+    width: 80%;
+    border-radius: 10px;
+    border: #FFCC00 solid 1px;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.imgCard img.fade-out {
+    opacity: 0; 
+}
+
+
+.btn-prev, .btn-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-30%);
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ffffff;
+    z-index: 1;
+    padding: 10px;
+}
+
+.btn-prev {
+    left: 10px; 
+}
+
+.btn-next {
+    right: 10px;
+}
+
+
+
+
+.coringa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* margin-bottom: 100px; */
+    width: 85%;
+    & h1 {
+        font-family: "Rubik Wet Paint", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        color: #ffffff;
+        font-size: 60px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    & .imgCard {
+        display: flex;
+        justify-content: center;
+        position: relative;
+
+        & span {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            color: white;
+            font-size: 40px;
+            font-family: "Russo One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        & .btn-amarelo {
+            position: absolute;
+            bottom: 3%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            font-size: 25px;
+            font-family: "Russo One", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            display: flex;
+            justify-content: center;
+            background-color: #FFCC00;
+            color: #000000;
+            width: 180px;
+            height: 60px;
+            text-align: center;
+            align-items: center;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+
+    & .imgCard img {
+        width: 80%;
+    }
+}
+
+.edutainment {
+    /* margin-bottom: 100px; */
+
+}
+
+.edutainment h1 {
+    color: #ffffff;
+    font-family: "Rubik Wet Paint", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 60px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.edutainment .conteudo {
+    display: flex;
+}
+
+
+.edutainment .conteudo .textosedutainment {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+
+    & ul {
+        color: #ffffff;
+        font-size: 30px;
+        font-family: "Russo One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & .bloco1 {
+            margin-bottom: 30px;
+        }
+
+        & .bloco1,
+        .bloco2 {
+            display: flex;
+
+            & img {
+                width: 32px;
+                height: 32px;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.edutainment .conteudo .imgCard2 {
+    position: relative;
+    max-width: 80%;
+    padding-right: 60px;
+}
+
+.edutainment .conteudo .imgCard2 img {
+    width: 80%;
+    height: 80%;
+}
+
+.edutainment .conteudo .imgCard2 .btn-amarelo {
+    display: flex;
+    justify-content: center;
+    background-color: #FFCC00;
+    color: #000000;
+    width: 180px;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    font-size: 25px;
+    font-family: "Russo One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    top: 65%;
+    right: 30%;
+}
+
+.edutainment .conteudo .textosedutainment ul {
+    display: flex;
+}
+
+.edutainment .conteudo .textosedutainment ul li {
+    list-style-type: none;
+}
+
+.conteudo1 {
+    display: flex;
+    width: 100%;
+
+    & span {
+        margin-bottom: 30px;
+    }
+}
+
+.conteudo1 .imgCard {
+    width: 50%;
+    padding-left: 5%;
+
+
+    & img {
+        width: 80%;
+        height: 100%;
+    }
+}
+
+.conteudo1 .textos {
+    width: 50%;
+    color: #ffffff;
+    font-size: 30px;
+    font-family: "Russo One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    width: 40%;
+
+}
+
+.edutainment .conteudo1 .textos {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    & .bloco1,
+    .bloco2 {
+        display: flex;
+        margin-bottom: 30px;
+
+        & img {
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+    }
+}
+
+.edutainment .conteudo1 .textos {
+    list-style-type: none;
+}
+
+.sobremim {
+
+    /* margin-bottom: 100px; */
+    /* width: 85%; */
+
+    & h1 {
+        color: #ffffff;
+        font-family: "Rubik Wet Paint", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 60px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+
+    & .sobremimconteudo {
+        display: flex;
+        justify-content: center;
+
+
+
+        & .imgsobremim {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+
+
+            & img {
+                width: 40%;
+                border-radius: 20px;
+                border: solid 1px #FFCC00;
+            }
+        }
+
+        & .textosobremim {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            & .msg p {
+                
+                width: 70%;
+                color: #ffffff;
+                font-size: 30px;
+                font-family: "Russo One", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+        }
+    }
+}
+
+.sobreprojeto {
+/* margin-bottom: 100px; */
+
+/* width: 85%; */
+    & .conteudosobreprojeto {
+        display: flex;
+        justify-content: center;
+    }
+
+    & h1 {
+        color: #ffffff;
+        font-family: "Rubik Wet Paint", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        font-size: 60px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    & .conteudosobreprojeto {
+        display: flex;
+
+
+        & .textossobreprojeto {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+
+
+            & .msg {
+                height: 80%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            & .msg p {
+                height: 80%;
+                width: 70%;
+                color: #ffffff;
+                font-size: 30px;
+                font-family: "Russo One", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+            }
+
+        }
+
+        & .imgsobreprojeto {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+
+
+
+footer {
+    display: flex;
+    width: 100%;
+    border-top: 2px solid #ffffff;
+
+
+    & .img {
+        width: 33%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    & .mensagem {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        text-align: center;
+        width: 33%;
+        color: #ffffff;
+        font-size: 20px;
+        font-family: "Russo One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        
+    }
+
+    & .redessociais {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 33%;
+        color: #ffffff;
+        font-size: 20px;
+        font-family: "Russo One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+
+
+        &  .social-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: space-between;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            font-size: 20px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .social-link i {
+            margin-right: 8px;
+        }
+    }
+}

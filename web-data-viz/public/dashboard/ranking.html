@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ranking</title>
+    <link rel="stylesheet" href="../css/ranking.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+
+<body onload="plotarRanking()">
+    <section class="container">
+        <aside>
+            <div class="top">
+                <img src="../assets/Batuser.png" alt="">
+                <span>Olá, Batman!</span>
+            </div>
+            <div class="content">
+                <span><i id="play" class="fa-solid fa-play"></i>BAT-CORRIDA</span>
+                <span><i class="fa-solid fa-chart-line"></i>DASHBOARD</span>
+                <span><i class="fa-solid fa-medal"></i>RANKING</span>
+            </div>
+            <div class="bottom">
+                <span><i class="fa-solid fa-door-open"></i>SAIR</span>
+            </div>
+        </aside>
+        <main>
+            <h1>RANKING</h1>
+            <div class="tabela">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>POSIÇÃO</th>
+                            <th>NOME</th>
+                            <th>DATA</th>
+                            <th>PONTUAÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>BATMAN</td>
+                            <td>22-02-2024</td>
+                            <td>3500</td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </section>
+</body>
+
+</html>
+
+<script>
+function plotarRanking() {
+    var idUsuario = sessionStorage.ID_USUARIO;
+
+    fetch(`/usuarios/plotarRanking?id=${idUsuario}`)
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json(); // Resolve o JSON corretamente
+            } else {
+                throw new Error('Erro ao obter o ranking');
+            }
+        })
+        .then(function (dados) {
+            console.log('Dados retornados pela API:', dados);
+
+            // Acessa o array dentro da propriedade `resultado`
+            const ranking = dados.resultado;
+
+            // Verifica se ranking é realmente um array
+                const tbody = document.querySelector('table tbody');
+                tbody.innerHTML = ''; // Limpa o conteúdo existente
+
+                // Adiciona os dados na tabela
+                ranking.forEach((item, index) => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${index + 1}</td>
+                        <td>${item.Nome}</td>
+                        <td>${new Date(item.Data).toLocaleDateString('pt-BR')}</td>
+                        <td>${item['Pontuação']}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            
+        })
+        .catch(function (erro) {
+            console.error('Erro ao plotar o ranking:', erro);
+        });
+}
+</script>

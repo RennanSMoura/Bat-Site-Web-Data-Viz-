@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/cadastro.css">
+</head>
+
+<body>
+    <section class="container">
+        <div class="formulario">
+            <h1 class="titulo" style="margin-bottom:40px ;">BATCADASTRO</h1>
+            <div class="form">
+                <h1>CADASTRE-SE</h1>
+                <div class="labels">
+                    <label for="">NOME USUÁRIO:</label>
+                    <input type="text" id="nome_input">
+                </div>
+                <div class="labels">
+                    <label for="">EMAIL:</label>
+                    <input type="text" id="email_input">
+                </div>
+                <div class="labels">
+                    <label for="">SENHA:</label>
+                    <input type="password" id="senha_input">
+                </div>
+                <div class="labels">
+                    <label for="">CONFIRMAÇÃO SENHA:</label>
+                    <input type="password" id="confirmacao_senha_input">
+                </div>
+                <button class="btn-amarelo" onclick="cadastrar()">CADASTRAR</button>
+              </div>
+            <img class="batbranco1" src="../assets/bat-white.png" alt="">
+            <!-- <img class="batbranco2" src="assets/bat-white.png" alt=""> -->
+            <img class="batbranco3" src="../assets/bat-white.png" alt="">
+            <!-- <img class="batbranco4" src="../assets/bat-white.png" alt=""> -->
+            <img class="batbranco5" src="../assets/bat-white.png" alt="">
+            <img class="batbranco6" src="../assets/bat-white.png" alt="">
+            <img class="batbranco7" src="../assets/bat-white.png" alt="">
+            <!-- <img class="batbranco8" src="../assets/bat-white.png" alt=""> -->
+            <img class="batbranco9" src="../assets/bat-white.png" alt="">
+            <img class="batbranco10" src="../assets/bat-white.png" alt="">
+            <img class="batbranco11" src="../assets/bat-white.png" alt="">
+            <img class="batbranco12" src="../assets/bat-white.png" alt="">
+            <img class="batbranco13" src="../assets/bat-white.png" alt="">
+            <img class="batbranco14" src="../assets/bat-white.png" alt="">
+            <img class="batbranco15" src="../assets/bat-white.png" alt="">
+            <img class="batbranco16" src="../assets/bat-white.png" alt="">
+            <img class="batbranco17" src="../assets/bat-white.png" alt="">
+            <img class="batbranco18" src="../assets/bat-white.png" alt="">
+            <img class="batbranco19" src="../assets/bat-white.png" alt="">
+        </div>
+        <div class="mensagem">
+            <div class="morcegos">
+                <img class="bat1" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+                <img class="bat2" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+                <img class="bat3" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+                <img class="bat4" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+                <img class="bat5" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+                <img class="bat6" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+                <img class="bat7" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+                <img class="bat8" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+                <img class="bat9" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+                <img class="bat10" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+                <!-- <img class="bat11" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt=""> -->
+                <img class="bat12" src="../assets/silhueta-negra-de-morcego-com-asas-abertas 11.png" alt="">
+            </div>
+            <div class="texto">
+                <span>
+                    CASO JÁ TENHA UM CADASTRO, CLIQUE AQUI PARA ENTRAR EM SUA CONTA
+                </span>
+                <button><a style="text-decoration: none; color: #000;" href="bat-login.html">ENTRAR</a></button>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
+
+<script>
+    function cadastrar() {
+    // aguardar();
+
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    
+    // Verificando se há algum campo em branco
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == "" ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML =
+        "(Mensagem de erro para todos os campos em branco)";
+
+      finalizarAguardar();
+      return false;
+    }
+
+
+    console.log('teste')
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+          setTimeout(() => {
+            window.location = "../auth/bat-login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+</script>
+
+<script src="../js/sessao.js"></script>

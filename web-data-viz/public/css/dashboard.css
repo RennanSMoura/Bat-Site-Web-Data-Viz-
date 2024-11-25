@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&family=Rubik+Wet+Paint&family=Russo+One&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Russo One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+.container{
+    display: flex;
+    width: 100%;
+}
+
+aside{
+    background-color: #FFCC00;
+ 
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+aside .top{
+    display: flex;
+    align-items: center;
+    padding: 4%;
+    width: 100%;
+    gap: 10px;
+    font-size: 30px;
+}
+
+aside .top img{
+    background-color: #000000;
+    border: 1px solid #ffffff;
+}
+
+
+aside .content{
+    display: flex;
+    flex-direction: column;
+    padding: 4%;
+    font-size: 30px;
+    display: flex;
+    gap: 60px;
+}
+
+aside .content i{
+    padding-right: 5%;
+    border-right: 1px solid black;
+    margin-right: 2%;
+}
+
+aside .bottom span{
+    display: flex; 
+    width: 100%;
+}
+
+aside .bottom i {
+    padding-right: 5%;
+    border-right: 1px solid black;
+    margin-right: 2%;
+}
+
+#play{
+    padding-right: 7%;
+}
+
+aside .bottom{
+    font-size: 30px;
+    padding: 4%;
+    display: flex
+;
+}
+
+
+main{
+    background-color: #000000;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+
+main .kpis{
+    width: 80%;
+    display: flex;
+    gap: 80px;
+    margin-top: 3%;
+}
+
+main .kpis .kpi{
+    background-color: #FFCC00;
+    width: 216px;
+    height: 128px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 18px;
+}
+
+main .kpis .kpi span{
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+#palavrasDescobertas,#highScore,#bestPosition{
+    font-size: 30px;
+}
+
+main .kpis .kpi i{
+    font-size: 30px;
+}
+
+
+main .grafico{
+    margin-top: 3%;
+    background-color: #FFCC00;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    padding: 20px;
+}
+
+main .grafico h1{
+    font-size: 35px;
+    text-align: center;
+    padding: 10px;
+}
+
+canvas{
+    
+}
