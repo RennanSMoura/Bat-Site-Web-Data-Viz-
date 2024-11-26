@@ -64,11 +64,11 @@ function receberDados(req, res) {
     );
 }
 
-function receberScoreGrafico(req, res){
+function receberScoreGrafico(req, res) {
     var idUsuario = req.query.id
 
     usuarioModel.selecionarScoreGrafico(idUsuario).then(
-        function (resultado){
+        function (resultado) {
             console.log('Retornei com o idCorrida')
             console.log(resultado)
             res.json({
@@ -94,46 +94,46 @@ function inserirDadosJogo(req, res) {
             console.log('Retornei do model para inserir dados no banco')
             res.json(resultado);
         }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro ao realizar o cadastro! Erro: ",
+                erro.sqlMessage
             );
+            res.status(500).json(erro.sqlMessage);
         }
+    );
+}
 
-function inserirDadosRanking(req, res){
+function inserirDadosRanking(req, res) {
     var idUsuario = req.body.idUsuarioServer
     var idCorrida = req.body.idCorridaServer;
     console.log('Dados recebidos (quero verificar o id da corrida):', req.body);
-    
 
-    usuarioModel.inserirRanking(idUsuario,idCorrida).then(
+
+    usuarioModel.inserirRanking(idUsuario, idCorrida).then(
         function (resultado) {
             console.log('Retornei do model para inserir dados do ranking no banco', resultado)
             res.json(resultado);
         }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro do ranking! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro ao realizar o cadastro do ranking! Erro: ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
     )
 }
 
-function plotarRanking(req, res){
+function plotarRanking(req, res) {
     var idUsuario = req.query.id
 
     usuarioModel.criarRanking(idUsuario).then(
-        function(resultado){
+        function (resultado) {
             console.log('Retornei com os dados do ranking', resultado)
             res.json({
                 resultado: resultado
@@ -147,6 +147,27 @@ function plotarRanking(req, res){
         }
     )
 }
+
+function receberMelhorPosicao(req, res) {
+    var idUsuario = req.query.id
+
+    usuarioModel.melhorPosicaoUsuario(idUsuario).then(
+        function (resultado) {
+            console.log('Retornei do Model com a maior posicao de cada usuario', resultado)
+            res.json({
+                resultado: resultado
+            })
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao recuperar a melhor posicao do usuario! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    )
+}
+
+
 
 
 function cadastrar(req, res) {
@@ -191,5 +212,6 @@ module.exports = {
     inserirDadosJogo,
     receberScoreGrafico,
     inserirDadosRanking,
-    plotarRanking
+    plotarRanking,
+    receberMelhorPosicao
 }

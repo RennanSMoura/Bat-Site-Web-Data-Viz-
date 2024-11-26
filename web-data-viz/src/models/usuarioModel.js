@@ -71,6 +71,30 @@ function inserirRanking(idUsuario, idCorrida) {
     return database.executar(instrucaoSql)
 }
 
+
+function melhorPosicaoUsuario(idUsuario){
+    var instrucaoSql =
+    `
+SELECT 
+    u.idUsuario,
+    u.nome AS Nome,
+    MIN(
+        (SELECT COUNT(*) 
+         FROM batcorrida b 
+			WHERE b.score > bc.score) + 1
+				) AS MelhorPosicao
+					FROM ranking r
+						JOIN usuario u
+							ON r.fkUsuarioCorrida = u.idUsuario
+								JOIN batcorrida bc
+									ON r.fkCorrida = bc.idBatCorrida
+										where idUsuario = ${idUsuario}
+										GROUP BY u.idUsuario, u.nome;
+
+    `
+    return database.executar(instrucaoSql)
+}
+
 function criarRanking(idUsuario){
     var instrucaoSql= 
     `
@@ -97,5 +121,6 @@ module.exports = {
     inserirDados,
     selecionarScoreGrafico,
     inserirRanking,
-    criarRanking
+    criarRanking,
+    melhorPosicaoUsuario
 };

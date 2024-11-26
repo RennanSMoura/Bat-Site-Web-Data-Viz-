@@ -1,69 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Bat- Dashboard</title>
-        <link rel="stylesheet" href="../css/dashboard.css">
-        <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-            rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    </head>
-    <body onload="receberDadosDash(), receberScoreGrafico()">
-        <section class="container">
-            <aside>
-                <div class="top">
-                    <img src="../assets/Batuser.png" alt="">
-                    <span>Olá, <span id="usuario_nome"></span>
-                </div>
-                <div class="content">
-                    <span >
-                        <i id="play" class="fa-solid fa-play"></i>BAT-CORRIDA</span>
-                    <span>
-                        <i class="fa-solid fa-chart-line"></i>DASHBOARD</span>
-                    <span>
-                        <i class="fa-solid fa-medal"></i>RANKING</span>
-                </div>
-                <div class="bottom">
-                    <span>
-                        <i class="fa-solid fa-door-open"></i>SAIR</span>
-                </div>
-            </aside>
-            <main>
-                <div class="kpis">
-                    <div class="kpi kpi1">
-                        <i class="fa-regular fa-lightbulb"></i>
-                        <span>TOTAL DE PALAVRAS DESCOBERTAS</span>
-                        <span id="palavrasDescobertas"></span>
-                    </div>
-                    <div class="kpi kpi2">
-                        <i class="fa-solid fa-trophy"></i>
-                        <span>MAIOR PONTUAÇÃO ATINGIDA</span>
-                        <span id="highScore"></span>
-                    </div>
-                    <div class="kpi kpi3">
-                        <i class="fa-solid fa-medal"></i>
-                        <span>MELHOR POSIÇÃO NO RANKING</span>
-                        <span id="bestPosition">3°</span>
-                    </div>
-                </div>
-                <div class="grafico">
-                    <h1>DESEMPENHO NAS ÚLTIMAS 10 PARTIDAS</h1>
-                    <canvas id="grafico" width="800" height="400"></canvas>
-                </div>
 
-                <div id="fodase"></div>
-            </main>
-        </section>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bat- Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="receberDadosDash(), receberScoreGrafico(), receberMelhorPosicao()">
+    <section class="container">
+        <aside>
+            <div class="top">
+                <img src="../assets/Batuser.png" alt="">
+                <span>Olá, <span id="usuario_nome"></span>
+            </div>
+            <div class="content">
+                <span>
+                    <i id="play" class="fa-solid fa-play"></i><a style="color: #000; text-decoration: none;"
+                        href="batcorrida.html">BAT-CORRIDA</a></span>
+                <span>
+                    <i class="fa-solid fa-chart-line"></i><a style="color: #000; text-decoration: none;"
+                        href="bat-dashboard.html">DASHBOARD</a></span>
+                <span>
+                    <i class="fa-solid fa-medal"></i><a style="color: #000; text-decoration: none;"
+                        href="ranking.html">RANKING</a></span>
+            </div>
+            <div class="bottom">
+                <span>
+                    <i class="fa-solid fa-door-open"></i><a style="color: #000; text-decoration: none;"
+                        href="../auth/bat-login.html">SAIR</a></span>
+            </div>
+        </aside>
+        <main>
+            <div class="kpis">
+                <div class="kpi kpi1">
+                    <i class="fa-regular fa-lightbulb"></i>
+                    <span>TOTAL DE PALAVRAS DESCOBERTAS</span>
+                    <span id="palavrasDescobertas"></span>
+                </div>
+                <div class="kpi kpi2">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>MAIOR PONTUAÇÃO ATINGIDA</span>
+                    <span id="highScore"></span>
+                </div>
+                <div class="kpi kpi3">
+                    <i class="fa-solid fa-medal"></i>
+                    <span>MELHOR POSIÇÃO NO RANKING</span>
+                    <span id="bestPosition"></span>
+                </div>
+            </div>
+            <div class="grafico">
+                <h1>DESEMPENHO NAS ÚLTIMAS 10 PARTIDAS</h1>
+                <canvas id="grafico" width="800" height="400"></canvas>
+            </div>
+
+            <div id="fodase"></div>
+        </main>
+    </section>
+</body>
+
 </html>
 
 <script>
     function receberDadosDash() {
         var idUsuario = sessionStorage.ID_USUARIO
 
-            fetch(`/usuarios/receberDados?id=${idUsuario}`)
+        fetch(`/usuarios/receberDados?id=${idUsuario}`)
             .then(function (resposta) {
                 console.log("Recebendo dados da corrida!")
 
@@ -71,15 +76,15 @@
                     console.log(resposta);
 
                     resposta.json().then(json => {
-                            console.log(json);
-                            console.log(JSON.stringify(json));
-                            sessionStorage.SCORE_USUARIO = json.score;
-                            sessionStorage.PALAVRASDESCOBERTAS_USUARIO = json.palavrasDescobertas;
+                        console.log(json);
+                        console.log(JSON.stringify(json));
+                        sessionStorage.SCORE_USUARIO = json.score;
+                        sessionStorage.PALAVRASDESCOBERTAS_USUARIO = json.palavrasDescobertas;
 
 
-                            
-                            exibirDadosDash()
-                        })
+
+                        exibirDadosDash()
+                    })
                 } else {
                     console.log("Houve um erro ao tentar recuperar os dados!");
                     resposta
@@ -93,7 +98,7 @@
 
     }
 
-    function exibirDadosDash(){
+    function exibirDadosDash() {
         const emailUsuario = sessionStorage.getItem("EMAIL_USUARIO");
         const idUsuario = sessionStorage.getItem("ID_USUARIO");
         const nomeUsuario = sessionStorage.getItem("NOME_USUARIO");
@@ -104,6 +109,48 @@
         document.getElementById("usuario_nome").innerHTML = `${nomeUsuario}`;
         document.getElementById("palavrasDescobertas").innerHTML = `${palavrasDescobertas}`;
         document.getElementById("highScore").innerHTML = `${melhorScoreUsuario}`;
+    }
+
+    function receberMelhorPosicao() {
+        var idUsuario = sessionStorage.getItem("ID_USUARIO");
+
+        fetch(`/usuarios/receberMelhorPosicao?id=${idUsuario}`).then(
+    function (resposta) {
+        console.log("Recebendo a melhor posicao de cada usuário!", resposta);
+
+        if (resposta.ok) {
+            resposta.json().then(json => {
+                console.log("Dados recebidos:", JSON.stringify(json));
+
+                // Recupera a melhor posição corretamente
+                if (json.resultado && json.resultado.length > 0) {
+                    const melhorPosicao = json.resultado[0].MelhorPosicao;
+                    console.log("Melhor posição:", melhorPosicao);
+
+                    // Armazena no sessionStorage
+                    sessionStorage.setItem("MELHOR_POSICAO", melhorPosicao);
+                    exibirMelhorPosicao()
+                } else {
+                    console.warn("Nenhum resultado encontrado no array 'resultado'.");
+                }
+            });
+        } else {
+            console.log("Houve um erro ao tentar recuperar a melhor posição!");
+            resposta.text().then(texto => {
+                console.error(texto);
+            });
+        }
+    }
+).catch(erro => {
+    console.error("Erro ao realizar o fetch:", erro);
+});
+    }
+
+
+    function exibirMelhorPosicao(){
+        const melhorPosicao = sessionStorage.getItem("MELHOR_POSICAO");
+
+        document.getElementById("bestPosition").innerHTML = `${melhorPosicao}°`
     }
 </script>
 

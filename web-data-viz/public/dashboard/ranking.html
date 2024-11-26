@@ -18,12 +18,15 @@
                 <span>Olá, Batman!</span>
             </div>
             <div class="content">
-                <span><i id="play" class="fa-solid fa-play"></i>BAT-CORRIDA</span>
-                <span><i class="fa-solid fa-chart-line"></i>DASHBOARD</span>
-                <span><i class="fa-solid fa-medal"></i>RANKING</span>
+                <span >
+                    <i id="play" class="fa-solid fa-play"></i><a style="color: #000; text-decoration: none;" href="batcorrida.html">BAT-CORRIDA</a></span>
+                <span>
+                    <i class="fa-solid fa-chart-line"></i><a style="color: #000; text-decoration: none;" href="bat-dashboard.html">DASHBOARD</a></span>
+                <span>
+                    <i class="fa-solid fa-medal"></i><a style="color: #000; text-decoration: none;" href="ranking.html">RANKING</a></span>
             </div>
             <div class="bottom">
-                <span><i class="fa-solid fa-door-open"></i>SAIR</span>
+                <span><i class="fa-solid fa-door-open"></i><a style="color: #000; text-decoration: none;" href="../auth/bat-login.html">SAIR</a></span>
             </div>
         </aside>
         <main>
@@ -124,7 +127,6 @@ function plotarRanking() {
         .then(function (dados) {
             console.log('Dados retornados pela API:', dados);
 
-            // Acessa o array dentro da propriedade `resultado`
             const ranking = dados.resultado;
 
             // Verifica se ranking é realmente um array

@@ -32,6 +32,10 @@ router.get("/plotarRanking", function (req, res) {
     usuarioController.plotarRanking(req, res);
 });
 
+router.get("/receberMelhorPosicao", function (req, res) {
+    usuarioController.receberMelhorPosicao(req, res);
+});
+
 
 
 module.exports = router;
