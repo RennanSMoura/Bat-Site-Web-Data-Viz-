@@ -6,11 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/cadastro.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
     <section class="container">
-        <div class="formulario">
+      <div class="formulario">
+        <a href="../index.html"><i style="color: #fff;position: absolute;right: 95%;top: 5%;font-size: 30px;" class="fa-solid fa-arrow-left"></i></a>
             <h1 class="titulo" style="margin-bottom:40px ;">BATCADASTRO</h1>
             <div class="form">
                 <h1>CADASTRE-SE</h1>
@@ -27,9 +29,10 @@
                     <input type="password" id="senha_input">
                 </div>
                 <div class="labels">
-                    <label for="">CONFIRMAÇÃO SENHA:</label>
-                    <input type="password" id="confirmacao_senha_input">
-                </div>
+                  <label for="">CONFIRMAÇÃO SENHA:</label>
+                  <input type="password" id="confirmacao_senha_input">
+              </div>
+              
                 <button class="btn-amarelo" onclick="cadastrar()">CADASTRAR</button>
               </div>
             <img class="batbranco1" src="../assets/bat-white.png" alt="">
@@ -81,40 +84,32 @@
 
 <script>
     function cadastrar() {
-    // aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var emailChars = emailVar.split('');
     
-    // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+    if ((nomeVar == "" ||
+        emailVar == "" ||
+        senhaVar == "" ||
+        confirmacaoSenhaVar == "")
+        ||
+        (!emailChars.includes('@') || !emailChars.includes('.'))
+        ||
+        (senhaVar !== confirmacaoSenhaVar)
+        ){
+          alert("Verifique se não há campos em branco ou os dados estão inválidos");
+          return false;
+        }
 
-      finalizarAguardar();
-      return false;
-    }
-
-
-    console.log('teste')
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
+   fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar

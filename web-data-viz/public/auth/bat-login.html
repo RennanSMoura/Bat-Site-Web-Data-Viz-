@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BatLogin</title>
     <link rel="stylesheet" href="../css/bat-login.css">
-</head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"></head>
 
 <body>
     <section class="container">
         <div class="mensagem">
-            <span>CASO NÃO TENHA UMA CONTA, CADASTRE-SE AGORA MESMO</span>
+            <a href="../index.html"><i style="color: #fff;position: absolute;right: 95%;top: 5%;font-size: 30px;" class="fa-solid fa-arrow-left"></i></a>            <span>CASO NÃO TENHA UMA CONTA, CADASTRE-SE AGORA MESMO</span>
             <button><a style="text-decoration: none; color: #000;" href="bat-cadastro.html">CADASTRE-SE</a></button>
             <div class="bats">
                 <img class="batbranco1" src="../assets/bat-white.png" alt="">
@@ -38,18 +38,18 @@
         <div class="formulario">
             <div class="formulario">
                 <div class="form">
-                <h1 class="titulo" style="margin-bottom:40px ;">BATLOGIN</h1>
-                <h1>ENTRAR</h1>
-                <div class="labels">
-                    <label for="">EMAIL:</label>
-                    <input type="text" id="email_input">
+                    <h1 class="titulo" style="margin-bottom:40px ;">BATLOGIN</h1>
+                    <h1>ENTRAR</h1>
+                    <div class="labels">
+                        <label for="">EMAIL:</label>
+                        <input type="text" id="email_input">
+                    </div>
+                    <div class="labels">
+                        <label for="">SENHA:</label>
+                        <input type="password" id="senha_input">
+                    </div>
+                    <button class="btn-amarelo" onclick="entrar()">ENTRAR</button>
                 </div>
-                <div class="labels">
-                    <label for="">SENHA:</label>
-                    <input type="password" id="senha_input">
-                </div>
-                <button class="btn-amarelo" onclick="entrar()">ENTRAR</button>
-            </div>
             </div>
     </section>
 </body>

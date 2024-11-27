@@ -129,11 +129,9 @@ function plotarRanking() {
 
             const ranking = dados.resultado;
 
-            // Verifica se ranking é realmente um array
                 const tbody = document.querySelector('table tbody');
                 tbody.innerHTML = ''; // Limpa o conteúdo existente
 
-                // Adiciona os dados na tabela
                 ranking.forEach((item, index) => {
                     const tr = document.createElement('tr');
                     tr.innerHTML = `

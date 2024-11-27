@@ -13,7 +13,7 @@ const dados = {
 };
 
 const config = {
-    type: 'line', // Tipo de gráfico
+    type: 'line', 
     data: dados,
     options: {
         scales: {

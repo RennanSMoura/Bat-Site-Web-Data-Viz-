@@ -57,7 +57,6 @@
                 <canvas id="grafico" width="800" height="400"></canvas>
             </div>
 
-            <div id="fodase"></div>
         </main>
     </section>
 </body>
@@ -102,10 +101,17 @@
         const emailUsuario = sessionStorage.getItem("EMAIL_USUARIO");
         const idUsuario = sessionStorage.getItem("ID_USUARIO");
         const nomeUsuario = sessionStorage.getItem("NOME_USUARIO");
-        const palavrasDescobertas = sessionStorage.getItem("PALAVRASDESCOBERTAS_USUARIO");
-        const melhorScoreUsuario = sessionStorage.getItem("SCORE_USUARIO");
+        var palavrasDescobertas = sessionStorage.getItem("PALAVRASDESCOBERTAS_USUARIO");
+        var melhorScoreUsuario = sessionStorage.getItem("SCORE_USUARIO");
 
+        if(palavrasDescobertas == 'null'){
+            palavrasDescobertas = 0
+        }
 
+        if(melhorScoreUsuario == 'null'){
+            melhorScoreUsuario = '0'
+        }
+        
         document.getElementById("usuario_nome").innerHTML = `${nomeUsuario}`;
         document.getElementById("palavrasDescobertas").innerHTML = `${palavrasDescobertas}`;
         document.getElementById("highScore").innerHTML = `${melhorScoreUsuario}`;
@@ -148,7 +154,7 @@
 
 
     function exibirMelhorPosicao(){
-        const melhorPosicao = sessionStorage.getItem("MELHOR_POSICAO");
+        const melhorPosicao = sessionStorage.getItem("MELHOR_POSICAO") || '-';
 
         document.getElementById("bestPosition").innerHTML = `${melhorPosicao}°`
     }
