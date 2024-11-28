@@ -354,6 +354,7 @@ nav {
                 width: 32px;
                 height: 32px;
                 margin-right: 10px;
+                
             }
         }
     }
@@ -363,11 +364,14 @@ nav {
     position: relative;
     max-width: 80%;
     padding-right: 60px;
+    
 }
 
 .edutainment .conteudo .imgCard2 img {
     width: 80%;
     height: 80%;
+    border-radius: 10px;
+    border: #FFCC00 solid 1px;
 }
 
 .edutainment .conteudo .imgCard2 .btn-amarelo {
@@ -484,7 +488,7 @@ nav {
             & img {
                 width: 60%;
                 border-radius: 20px;
-                border: solid 1px #FFCC00;
+                border: solid 3px #FFF;
                 object-fit: cover;
             }
         }
@@ -564,7 +568,7 @@ nav {
             & img{
                 width: 60%;
                 border-radius: 20px;
-                border: solid 1px #FFCC00;
+                border: solid 3px #FFF;
                 object-fit: cover;
                 height: 360px
             }

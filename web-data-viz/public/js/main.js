@@ -1,15 +1,18 @@
 var images = [
     {
         title: "BATMAN BEGINS",
-        src: "assets/begins.png"
+        src: "assets/BEGIN.jpg",
+        link: "https://batman.fandom.com/wiki/Batman_Begins"
     },
     {
         title: "THE DARK KNIGHT",
-        src: "assets/dark-knight.jpg"
+        src: "assets/dark-knight.jpg",
+        link: "https://batman.fandom.com/pt-br/wiki/Batman:_O_Cavaleiro_das_Trevast"
     },
     {
         title: "THE DARK KNIGHT RISES",
-        src: "assets/dark-knight-rises.jpg"
+        src: "assets/dark-knight-rises.jpg",
+        link: "https://batman.fandom.com/wiki/The_Dark_Knight_Rises"
     }
 ];
 
@@ -36,7 +39,14 @@ function changeImage(direction) {
 function updateCarousel() {
     var titleElement = document.getElementById('card-title');
     var imageElement = document.getElementById('card-image');
+    var readMoreButton = document.getElementById('lerMais'); // Seleciona o botão com id "lerMais"
     
+    // Atualiza o título da imagem
     titleElement.textContent = images[currentIndex].title;
+    
+    // Atualiza a imagem do carrossel
     imageElement.src = images[currentIndex].src;
+    
+    // Atualiza o link do botão "LER MAIS"
+    readMoreButton.href = images[currentIndex].link;
 }
