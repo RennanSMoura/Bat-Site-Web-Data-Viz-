@@ -14,9 +14,9 @@ function coletarDadosKpi(idUsuario) {
     var instrucaoSql =
         `
         select sum(palavrasDescobertas) as TotalPalavras,
-         max(score) as MaiorPontuacao from batCorrida
+         max(score) as MaiorPontuacao from batcorrida
             join usuario
-                on batCorrida.fkUsuario = usuario.idUsuario
+                on batcorrida.fkUsuario = usuario.idUsuario
                     where idUsuario = ${idUsuario};
     `
     return database.executar(instrucaoSql);
@@ -50,7 +50,7 @@ function cadastrar(nome, email, senha) {
 function inserirDados(score, qtdPalavrasDescoberta, idUsuario) {
     var instrucaoSql =
         `
-        insert into batCorrida (score,palavrasDescobertas,fkUsuario)
+        insert into batcorrida (score,palavrasDescobertas,fkUsuario)
             values
                 (${score},${qtdPalavrasDescoberta},${idUsuario});
 
@@ -64,7 +64,7 @@ function inserirDados(score, qtdPalavrasDescoberta, idUsuario) {
 function inserirRanking(idUsuario, idCorrida) {
     var instrucaoSql =
         `
-        INSERT INTO RANKING (fkCorrida, fkUsuarioCorrida,dataRanking)
+        INSERT INTO ranking (fkCorrida, fkUsuarioCorrida,dataRanking)
             values
                 (${idCorrida},${idUsuario},curdate());
     `
@@ -105,7 +105,7 @@ function criarRanking(idUsuario){
                         JOIN usuario
                             ON ranking.fkUsuarioCorrida = usuario.idUsuario
                                 JOIN batcorrida
-                                    ON ranking.fkCorrida = batCorrida.idBatCorrida
+                                    ON ranking.fkCorrida = batcorrida.idBatCorrida
                                         ORDER BY batcorrida.score desc
                                             limit 10;
     `
